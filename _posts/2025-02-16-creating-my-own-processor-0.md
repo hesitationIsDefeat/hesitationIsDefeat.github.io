@@ -121,3 +121,122 @@ Fevkalade! Artık RISC-V'in ne olduğu konusunda temel bir fikre sahibiz.
 Gelecek yazımda RISC-V'in modüler yapısından, register'lardan ve temel komutlardan bahsedeceğim.
 
 Sağlıcakla kalın!
+
+## <center>.......</center>
+
+![Future Processor](/assets/img/article/Leonardo_Phoenix_10_A_cinematic_black_and_white_photograph_of_1.jpg)
+
+(English)
+
+(Note: The following translation was generated with some help due to the time limitations, not the lack of skills on my end. Enjoy the reading!)
+
+Hello everyone. We have reached the end of a long break in which it was difficult for me to decide on a topic I wanted to research in depth and start a series of articles.
+
+For some time, I have wanted to learn assembly and write low-code, but I have not had the opportunity to dedicate enough time to it. While studying my final semester at Boğaziçi University, I took the Computer Architecture course in the Computer Engineering department, which forced me to allocate time, thus beginning a journey into the “deeper” aspects of software. By documenting my learning journey through the articles I will prepare, I will both better identify my shortcomings and increase the enjoyment I get from the process.
+
+For the course project, we will be working with the RISC-V architecture. I have dedicated the first part of my learning journey to understanding the RISC-V architecture. In the later stages, I will start focusing on hardware as well, particularly on FPGA and HDL topics. My ultimate goal is to design my own processor and the code that will run on it.
+
+To understand what RISC-V is, we first need to grasp certain concepts. For this reason, I have divided my article into five sections, as follows:
+
+1. What is assembly language?
+
+2. What is ISA?
+
+3. What is an open standard ISA?
+
+4. What is RISC?
+
+5. What is RISC-V?
+
+
+## What is assembly?
+Assembly language, or simply assembly, is located just above machine code in the hierarchy of programming languages. Its purpose is to communicate in a language that the processor can understand with the help of an assembler, that is, to translate given commands into binary format. It is considered the lowest level form of coding that is human-readable. In a way, it acts as a bridge between high-level languages like Python, Java, C, and Rust (which also have their own high-low hierarchy) and binary format.
+
+In other words, code written in Python eventually translates back into assembly format. As a representative example:
+
+The code line
+```python
+sum = 1 + 2
+```
+
+roughly translates into the following assembly code:
+
+```
+addi t0, zero, 1 
+addi t1, zero, 2
+add a0, t0, t1
+```
+
+Similarly, the assembly command
+
+```
+addi t0, zero, 1
+```
+
+is converted into a binary instruction:
+
+```
+00000000000100000000001010010011 (0x00100293 in hex)
+```
+
+making it understandable by the processor. This is how human-computer communication is established.
+
+## What is ISA?
+
+Instruction Set Architecture, or ISA for short, is a set of definitions that establish the rules and methods necessary for proper interaction with a processor. The fundamental components of an ISA are as follows:
+
+- Instruction Set: The commands the processor knows how to execute
+
+- Registers: Small storage locations inside the processor that can hold a small amount of data and be accessed very quickly
+
+- Addressing Modes: Determine how given commands access memory
+
+- Memory Model: Specifies how the processor accesses and organizes memory
+
+- Data Types: Includes the data types the processor can handle
+
+- Interrupt & Exception Handling: Defines the processor’s response to events that require immediate attention, whether originating externally (a command to stop the code) or internally (an error in the code)
+
+
+## What is an open standard ISA?
+
+As the name suggests, an open standard ISA is open-source. This allows you to create your own processor without paying any fees or being tied to a license. Additionally, open standard ISAs are usually modular, enabling you to customize the set of rules according to your needs. I will explain this feature in detail in my next article.
+
+One of the most important advantages of open standard ISAs is that the way the binary instruction is interpreted by the processor is clearly documented. For example, taking the previous binary instruction:
+
+```
+00000000000100000000001010010011
+```
+
+the processor breaks it down as follows:
+
+```
+000000000001 00000 000 00101 0010011
+```
+
+and executes the command based on these values. Since I do not want to delve into more complex topics in the first article, I will explain what these values correspond to in my future articles. For now, it is enough to understand that knowing how a binary instruction is processed is crucial for creating our own processor in the future.
+
+## What is RISC?
+
+Reduced Instruction Set Computing, or RISC for short, can be considered a set of principles for designing an ISA. The goal of RISC is to achieve high performance by using a small number of efficient commands. Its key features include:
+
+- Consists of simple instructions that take one or a few clock cycles
+
+- Since most instructions have a fixed size, the processor can interpret them more efficiently
+
+- Has more general-purpose registers compared to other architectures, reducing the need to access memory and improving performance
+
+- Due to its simple instructions, it benefits more from pipelining (processing commands in parallel) compared to other architectures
+
+- Since it has fewer addressing modes compared to other architectures, it similarly benefits more from pipelining
+
+## What is RISC-V?
+
+RISC-V is an open standard ISA based on RISC principles. Thanks to its assembly language (RISC-V Assembly), it enables us to produce code in machine language.
+
+Excellent! Now we have a basic idea of what RISC-V is.
+
+## Next time:
+In my next article, I will talk about the modular structure of RISC-V, registers, and basic instructions.
+
+Stay safe!
