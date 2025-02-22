@@ -4,17 +4,25 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-# My Personal Website
+# Welcome to My Personal Website
 
-Welcome to my personal website! I'm Onat and here, I share my thoughts, insights, and articles on topics that interest me, mostly about software, hardware, AI, and other nerdy stuff. This is a space where I explore and document my passions.
-
-## What You Can Find Here
-- 💻 **Software & Hardware**: My experiences and thoughts on various technologies.
-- 🤖 **Artificial Intelligence**: Insights into AI advancements and projects.
-- 🎮 **Nerdy Stuff**: Anything from gaming to sci-fi, and beyond.
-- ✍ **Personal Blog**: My random musings and deep dives into different topics.
+## About Me
+Hi. I'm Onat, and here is a short recap of me. I'm a **Mathematics student** at **Boğaziçi University** with a deep passion for **coding** and problem-solving. Beyond the world of logic and algorithms, I enjoy **boxing** and **weightlifting**, which keep me active and disciplined. I'm also into **gaming**, both as a player and an enthusiast, and I love **discovering new places** to explore and experience different cultures.
 
 ## Why This Website?
-This website is my personal corner of the internet where I can document my learning journey, share interesting discoveries, and connect with like-minded individuals.
+This website serves as my personal space to:
+- ✨ **Share my passion** for technology, mathematics, and more.
+- 🔬 **Document my research** and insights on various topics.
+- 🚀 **Showcase my projects** and the things I build.
+- 📚 **Archive my work**, ensuring my journey and knowledge remain accessible.
+
+## Contact
+Want to connect? Reach out to me here:
+- 📧 **Email**: tanrioveronat@gamil.com
+- 💼 **LinkedIn**: [Onat Tanrıöver](https://www.linkedin.com/in/onat-tanr%C4%B1%C3%B6ver)
+- 📸 **Instagram**: [@onattanriover](https://www.instagram.com/onattanriover)
+
+Thanks for stopping by! 🚀
+
 
 
