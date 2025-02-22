@@ -1,5 +1,7 @@
 ---
-title: "Creating My Own Processor #0"   
+title: "Creating My Own Processor #0"
+description: "What is RISC-V?"
+image: "/assets/img/article/Leonardo_Phoenix_10_A_cinematic_black_and_white_photograph_of_1.jpg"
 date: 2025-02-16 20:00:00 +0300
 categories: [processor, risc-v]
 tags: [assembly, risc-v, low level programming, processor, isa]     
@@ -122,7 +124,7 @@ Gelecek yazımda RISC-V'in modüler yapısından, register'lardan ve temel komut
 
 Sağlıcakla kalın!
 
-## 
+## ...
 
 ![Future Processor](/assets/img/article/Leonardo_Phoenix_10_A_cinematic_black_and_white_photograph_of_1.jpg)
 
