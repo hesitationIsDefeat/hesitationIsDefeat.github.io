@@ -9,8 +9,6 @@ tags: [assembly, risc-v, low level programming, processor, isa]
 
 # What is RISC-V?
 
-![Future Processor](/assets/img/article/Leonardo_Phoenix_10_A_cinematic_black_and_white_photograph_of_1.jpg)
-
 (Türkçe)
 
 (Not: Bu yazıda mümkün olduğunca Türkçe karşılıklar kullanılmış, anlam bütünlüğünün daha iyi sağlandığı noktalarda İngilizce kavramlara yer verilmiştir. İyi okumalar!)
@@ -125,8 +123,6 @@ Gelecek yazımda RISC-V'in modüler yapısından, register'lardan ve temel komut
 Sağlıcakla kalın!
 
 ## ...
-
-![Future Processor](/assets/img/article/Leonardo_Phoenix_10_A_cinematic_black_and_white_photograph_of_1.jpg)
 
 (English)
 
