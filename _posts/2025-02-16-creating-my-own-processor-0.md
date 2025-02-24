@@ -11,7 +11,7 @@ tags: [assembly, risc-v, low level programming, processor, isa]
 ***
 [Go to English translation](#what-isrisc-v)
 
-(Not: Bu yazıda mümkün olduğunca Türkçe karşılıklar kullanılmış, anlam bütünlüğünün daha iyi sağlandığı noktalarda İngilizce kavramlara yer verilmiştir. İyi okumalar!)
+>Not: Bu yazıda mümkün olduğunca Türkçe karşılıklar kullanılmış, anlam bütünlüğünün daha iyi sağlandığı noktalarda İngilizce kavramlara yer verilmiştir. İyi okumalar!)
 
 Herkese selamlar. Uzun ve ilgilendiğim hangi konu hakkında daha da derinlemesine araştırma yapıp bir yazı serisine başlama kararı almamın zor olduğu bir aranın sonuna gelmiş bulunuyoruz.
 
@@ -125,7 +125,7 @@ Sağlıcakla kalın!
 ## What is RISC-V?
 ***
 
-(Note: The following translation was generated with some help due to the time limitations, not the lack of skills on my end. Enjoy the reading!)
+>Note: The following translation was generated with some help due to the time limitations, not the lack of skills on my end. Enjoy the reading!)
 
 Hello everyone. We have reached the end of a long break in which it was difficult for me to decide on a topic I wanted to research in depth and start a series of articles.
 
