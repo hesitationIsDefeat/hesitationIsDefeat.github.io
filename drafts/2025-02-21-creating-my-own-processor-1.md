@@ -54,7 +54,7 @@ RISC-V mimarisini 4 farklı temelden başlatma şansına sahibiz. Her birinin ke
 
  Daha önce register'ların işlemci içerisinde bulunan küçük bellek alanları olduğundan bahsetmiştim. RISC-V mimarisinde bu arkadaşlardan temel olarak 32 adet bulunuyor. Bunlara integer registers dendiğine de şahit olabilirsiniz. Nitekim floating-point işlemlerin yapılabilmesi için bir 32 tane daha eklememiz gerekiyor ancak ben olabildiğince temele odaklacağım, bu sebepten biz temel 32 ile ilgileniyor olacağız. Bu arkadaşları inceleyelim.
 
-**General Purpose Registers**
+#### Genel Amaçlı Registerlar (GPR)
 
 | İsim  | Takma Adı | Kullanım Amacı | 
 |-------|-------|---------| 
@@ -93,10 +93,58 @@ RISC-V mimarisini 4 farklı temelden başlatma şansına sahibiz. Her birinin ke
 
 > Burada göstermiş olduğum takma adlar ve kullanım amaçları ABI tarafından belirleniyor. ABI (Application Binary Interface), yazılımı oluşturan parçaların binary seviyede nasıl etkileşeceğini belirleyen kurallar bütünüdür. Bu kurallar register'lar hakkında convention'lar belirlemekle beraber bellek düzeni ve işletim sistemi interaksiyonları gibi geniş bir çerçeveyi etkiler. Şimdilik bu kadarını bilmemiz yeterli.
 
-Şimdi bu Register'ların genel özellikleri:
+Şimdi bu Register'ların genel özelliklerine bakacak olursak:
 
 - Her bir register'ın sahip olduğu bellek aynı ve kullanılan mimariye bağlı olarak 32, 64 ya da 128-bit miktarda belleğe sahip oluyorlar.
 
 - Her bir register'ın xi şeklinde bir adı ve kullanım amacını belirten bir de takma adı var. Assembly yazarken register'a atıfta bulunurken istediğimizi kullanabiliriz. Ben takma adın kullanımının özellikle okunurluğu ciddi miktarda arttırmasından dolayı tercih ve tavsiye ediyorum.
 
 - İlk 5 register'ı ayrı tutacak olursak; a, s ve t register'larını birbirlerinin yerine kullanmak mümkün ancak işleri kendimiz için daha da zor hale getirmemek adın ABI'de belirtildiği şekilde kod yazmak en doğrusu olacaktır. 
+
+#### Özel Registerlar
+
+| İsim  | Kullanım Amacı |
+|-------|---------|
+| pc    | Program Counter |
+| f0-f31 | Floating-Point Registers |
+| csr   | Control and Status Registers (various) |
+
+pc register'ında işlenecek bir sonraki komutun adresi bulunur. f tipi register'lar [F eklentisi](##temeller-ve-modüller) ile gelen floating-point işlemler için kullanılıyorlar. csr register'ları ise sistem ve işletim sistemi ile alakalı şu an için görece karmaşık işlemler için kullanılıyorlar.
+
+Register'lar ile ilgili daha detaylı bilgi edinmek için [buraya](https://github.com/hesitationIsDefeat/RISC-V-Plaground/blob/main/registers.md) bakabilirsiniz.
+
+### RISC-V Assembly Komutları
+
+RISC-V Assembly yazarken bize sunulan komutlardan faydalanıyoruz. Komutlardan kastım bizim için önceden tanımlanmış, işlemcinin binary bir formata dönüştürmeyi bildiği makine komutlarından bahsediyorum. Bu sayede teker teker 0 ve 1 girmek yerine çok daha hızlı bir şekilde, (benim tecrübeme göre) human readable olan en alt katmanda ne istediğimizi beyan edebiliyoruz.
+
+#### Komut Tipleri
+
+Toplamda 6 adet komut tipimiz var. Bu komut tipleri, yerine getirdikleri komut tipine göre sınıflandırılmış durumdalar:
+
+1. R-Tipi Komutlar (Register-Register): Register'ların değerlerini kullanarak bir register'a değer atama işlemleri yaparken kullanılan komutlar
+
+2. I-Tipi Komutlar (Immediate): Register'lara sabit bir değer atama işlemlerinde kullanılan komutlar
+
+3. U-Tipi Komutlar (Upper Immediate): 12 bit'ten daha fazla yer kaplayan sabit değerleri içeren işlemlerde kullanılan komutlar
+
+4. S-Tipi Komutlar (Save): Bellekten okuma ya da belleğe yazma işlemlerinde kullanılan komutlar
+
+5. J-Tipi Komutlar (Jump): Belirtilen bir adresteki komutu uygulamak için kullanılan komutlar
+
+6. B-Tipi Komutlar (Branch): Şartlı jump (bir üstteki tip) komutlarını uygulamak için kullanılan komutlar
+
+#### Komutların Binary Forma Dönüşümü
+
+Yukarıda bahsi geçen her bir komutun işlemci tarafından anlaşılması için işlemciye binary formda sunulması gerekiyor. Dolayısıyla her bir 
+
+| **Type**  | **Format**                                       | **Binary Format** |
+|-----------|------------------------------------|-------------| 
+| **R-Type** | `opcode rd, rs1, rs2`                       | func7[25:31] rs2[10:24] rs1[15:19] func3[12:14] rd[7:11] opcode[0:6]    |
+| **I-Type** | `opcode rd, rs1, imm`                | Immediate Arithmetic & Load |
+| **S-Type** | `opcode rs2, offset(rs1)`                | Store operations |
+| **B-Type** | `opcode rs1, rs2, offset`                 | Conditional Branches |
+| **U-Type** | `opcode rd, imm`                           | Load Upper Immediate |
+| **J-Type** | `opcode rd, offset`                           | Jumps |
+
+
+#### Pseudo Komutlar
