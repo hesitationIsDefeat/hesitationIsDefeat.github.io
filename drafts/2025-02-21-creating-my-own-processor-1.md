@@ -48,7 +48,7 @@ RISC-V mimarisini 4 farklı temelden başlatma şansına sahibiz. Her birinin ke
 
  - S: İşletim sistemi desteği içerir
 
- Bu ve bahsetmediğim diğer eklentiler hakkında daha detaylı bilgi edinmek isterseniz sizi [buraya]() davet ediyorum.
+ Bu ve bahsetmediğim diğer eklentiler hakkında daha detaylı bilgi edinmek isterseniz sizi [buraya](https://github.com/hesitationIsDefeat/RISC-V-Plaground) davet ediyorum.
 
  ### Registerlar
 
