@@ -58,7 +58,7 @@ addi t0, zero, 1
 assembly komutu
 
 ```
-00000000000100000000001010010011 (0x00100293 in hex)
+00000000000100000000001010010011 (0x00100293 hex formatında)
 ```
 
 olacak şekilde bir binary komutuna dönüştürülür ve işlemcinin idrak edebileceği bir hale gelir. Bu sayede insan-bilgisayar iletişimi sağlanır.
