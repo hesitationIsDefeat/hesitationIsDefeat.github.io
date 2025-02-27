@@ -135,16 +135,50 @@ Toplamda 6 adet komut tipimiz var. Bu komut tipleri, yerine getirdikleri komut t
 
 #### Komutların Binary Forma Dönüşümü
 
-Yukarıda bahsi geçen her bir komutun işlemci tarafından anlaşılması için işlemciye binary formda sunulması gerekiyor. Dolayısıyla her bir 
+Yukarıda bahsi geçen her bir komutun işlemci tarafından anlaşılması için işlemciye binary formda sunulması gerekiyor. Bu binary form ise her komut tipi için farklı bir düzene sahip. Her birine kısaca göz atalım: 
 
-| **Type**  | **Format**                                       | **Binary Format** |
+| **Komut Tipi**  | **Komut Formu**                                       | **Binary Formu** |
 |-----------|------------------------------------|-------------| 
-| **R-Type** | `opcode rd, rs1, rs2`                       | func7[25:31] rs2[10:24] rs1[15:19] func3[12:14] rd[7:11] opcode[0:6]    |
-| **I-Type** | `opcode rd, rs1, imm`                | Immediate Arithmetic & Load |
-| **S-Type** | `opcode rs2, offset(rs1)`                | Store operations |
-| **B-Type** | `opcode rs1, rs2, offset`                 | Conditional Branches |
-| **U-Type** | `opcode rd, imm`                           | Load Upper Immediate |
-| **J-Type** | `opcode rd, offset`                           | Jumps |
+| **R-Type** | `opcode rd, rs1, rs2`             | func7[25:31] rs2[20:24] rs1[15:19] func3[12:14] rd[7:11] opcode[0:6] |
+| **I-Type** | `opcode rd, rs1, imm`             | imm[31:20] rs1[15:19] func3[12:14] rd[7:11] opcode[0:6] |
+| **U-Type** | `opcode rd, imm`                  | imm[31:12] rd[7:11] opcode[0:6] |
+| **S-Type** | `opcode rs2, offset(rs1)`         | imm[25:31] rs2[20:24] rs1[15:19] func3[12:14] imm[7:11] opcode[0:6] |
+| **J-Type** | `opcode rd, offset`               | imm[12:19] imm[11] imm[1:10] imm[20] rd[7:11] opcode[0:6] |
+| **B-Type** | `opcode rs1, rs2, offset`         | imm[12] imm[10:5] rs2[20:24] rs1[15:19] func3[12:14] imm[4:1] imm[11] opcode[0:6] |
 
+
+
+> Little-Endian: Teknik tanımına bakacak olursak little-endianness kıymeti en az olan byte'ın en küçük adreste tutulması olarak tanımlanıyor. Bir örnek üzerinden gidelim:
+
+```plain
+lw t0, 4(sp) -> 000000000100 00010 010 00101 0000011 binary formu -> 0x00412203 hex formu
+```
+ 
+Burada girdiğimiz komutu derlendiğinde bu binary (ve dolayısıyla hex) formuna dönüşüyor. Bu komutu belleğe kaydetmek istediğimizde
+
+```plain
+0x00412203 komut hex formu -> 0x03224100 bellekteki komut hex formu
+```
+
+şekilde ters çeviriyoruz ve belleğe
+
+```plain
+0x1000 -> 0x03
+0x1001 -> 0x22
+0x1002 -> 0x41
+0x1003 -> 0x00
+```
+
+şeklinde kaydediyoruz. Dolayısıyla byte sırası tersine dönüyor, ancak byte'ın içerisindeki bitlerin sırası aynı kalıyor. Komutumuzun uygulanma zamanı geldiğinde işlemci bu komutu soldan sağa olacak şekilde, yani en küçük bellek adresinden başlayarak byte'lar halinde çekiyor. Bu örnekte ilk çektiğimiz byte 0x03 ve içerisinde opcode bilgisini içeriyor. Bu da işlemcimize diğer byte'ları çekerken aynı zamanda elde ettiği opcode bilgisi sayesinde uygulanacak komut hakkında ön bilgi sahibi olmasını sağlıyor. Bu sayede bir komutun uygulanması için gerekli süreçleri paralelde hallederek geçen süreyi kısaltmış oluyor.
 
 #### Pseudo Komutlar
+
+Komutlardan bahsetmişken pseudo komutlara yer vermemek olmaz. Pseudo komutlar, makine komutlarının aksine, direkt olarak binary forma dönüşemeyen; assembler tarafından assembly time'da tekabül ettiği makine komutlarına dönüşen komutlardır. Bir örnekle daha açık bir hale getireyim.
+
+t0 register'ındaki değeri t1 register'ına atamak istediğimizi varsayalım. Bu durumda
+
+```
+add t0, zero, t1
+```
+
+komutunu kullanabiliriz. Aynı komutu kullanmak 
