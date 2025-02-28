@@ -109,7 +109,7 @@ RISC-V mimarisini 4 farklı temelden başlatma şansına sahibiz. Her birinin ke
 | f0-f31 | Floating-Point Registers |
 | csr   | Control and Status Registers (various) |
 
-pc register'ında işlenecek bir sonraki komutun adresi bulunur. f tipi register'lar [F eklentisi](##temeller-ve-modüller) ile gelen floating-point işlemler için kullanılıyorlar. csr register'ları ise sistem ve işletim sistemi ile alakalı şu an için görece karmaşık işlemler için kullanılıyorlar.
+pc register'ında işlenecek bir sonraki komutun adresi bulunur. f tipi register'lar [F eklentisi](https://github.com/hesitationIsDefeat/RISC-V-Plaground/blob/main/registers.md) ile gelen floating-point işlemler için kullanılıyorlar. csr register'ları ise sistem ve işletim sistemi ile alakalı şu an için görece karmaşık işlemler için kullanılıyorlar.
 
 Register'lar ile ilgili daha detaylı bilgi edinmek için [buraya](https://github.com/hesitationIsDefeat/RISC-V-Plaground/blob/main/registers.md) bakabilirsiniz.
 
