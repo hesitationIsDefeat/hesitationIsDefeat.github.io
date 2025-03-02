@@ -150,19 +150,19 @@ Yukarıda bahsi geçen her bir komutun işlemci tarafından anlaşılması için
 
 > Little-Endian: Teknik tanımına bakacak olursak little-endianness kıymeti en az olan byte'ın en küçük adreste tutulması olarak tanımlanıyor. Bir örnek üzerinden gidelim:
 
-```plain
+```
 lw t0, 4(sp) -> 000000000100 00010 010 00101 0000011 binary formu -> 0x00412203 hex formu
 ```
  
 Burada girdiğimiz komutu derlendiğinde bu binary (ve dolayısıyla hex) formuna dönüşüyor. Bu komutu belleğe kaydetmek istediğimizde
 
-```plain
+```
 0x00412203 komut hex formu -> 0x03224100 bellekteki komut hex formu
 ```
 
 şekilde ters çeviriyoruz ve belleğe
 
-```plain
+```
 0x1000 -> 0x03
 0x1001 -> 0x22
 0x1002 -> 0x41
@@ -175,10 +175,24 @@ Burada girdiğimiz komutu derlendiğinde bu binary (ve dolayısıyla hex) formun
 
 Komutlardan bahsetmişken pseudo komutlara yer vermemek olmaz. Pseudo komutlar, makine komutlarının aksine, direkt olarak binary forma dönüşemeyen; assembler tarafından assembly time'da tekabül ettiği makine komutlarına dönüşen komutlardır. Bir örnekle daha açık bir hale getireyim.
 
-t0 register'ındaki değeri t1 register'ına atamak istediğimizi varsayalım. Bu durumda
+t0 register'ına 12-bit in üzerinde bir değer, mesela 100000 değerini atamak istediğimizi varsayalım. Bu durumda
 
 ```
-add t0, zero, t1
+li t0, 100000
 ```
 
-komutunu kullanabiliriz. Aynı komutu kullanmak 
+pseudo komutunu kullanabiliriz. Bunu makine komutlarını kullanarak başarmak istediğimizde
+
+```
+lui t0, 0x186A0   # upper 20 bits 
+addi t0, t0, 0     # lower 12 bits
+```
+
+komularını çağırmamız gerekiyor.
+
+Pseudo komutlar sayesinde assembly kodu yazma hızımızı arttırmanın yanında kodumuzun daha rahat okunur bir hale getiriyoruz.
+
+### Gelecek Sefer:
+Gelecek yazımda RISC-V'in modüler yapısından, register'lardan ve temel komutlardan bahsedeceğim.
+
+Sağlıcakla kalın!

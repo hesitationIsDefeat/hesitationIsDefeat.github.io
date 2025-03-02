@@ -6,10 +6,10 @@ date: 2025-02-16 20:00:00 +0300
 categories: [processor, risc-v]
 tags: [assembly, risc-v, low level programming, processor, isa]     
 ---
+[Go to English translation](#what-isrisc-v)
 
 ## RISC-V nedir?
 ***
-[Go to English translation](#what-isrisc-v)
 
 >Not: Bu yazıda mümkün olduğunca Türkçe karşılıklar kullanılmış, anlam bütünlüğünün daha iyi sağlandığı noktalarda İngilizce kavramlara yer verilmiştir. İyi okumalar!)
 
