@@ -4,7 +4,7 @@ description: "Modularity, Registers and Instructions of RISC-V"
 image: "/assets/img/article/Leonardo_Phoenix_10_A_cinematic_black_and_white_photograph_of_1.jpg"
 date: 2025-02-21 20:00:00 +0300
 categories: [processor, risc-v]
-tags: [assembly, risc-v, low level programming, processor, isa]     
+tags: [assembly, risc-v, modularity, registers, instructions]     
 ---
 [Go to English translation](#modularity-registers-and-instructions-of-risc-v)
 
